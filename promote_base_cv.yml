@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  connection: local
+  vars:
+    sat_cv_name: "{{ item }}"
+    sat_publish: no
+    sat_promote: yes
+  tasks:
+  - name: Publish Base OS Content Views
+    include_role:
+      name: satellite6-content_views
+    with_items:
+      - RH
+      - EPEL
