@@ -9,6 +9,10 @@
     force_basic_auth: yes
   register: environment_list
 
+- name: Show Environment list
+  debug:
+    var: environment_list
+    
 - name: Initializing sat_current_env_name
   set_fact:
     sat_current_env_name: "{{ sat_env_name }}"
