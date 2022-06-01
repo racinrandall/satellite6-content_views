@@ -27,7 +27,7 @@
     sat_env_path: "{{ [ environment_list.json | json_query(query_env_prior) ] + sat_env_path }}"
     sat_current_env_name: "{{ environment_list.json | json_query(query_env_prior) }}"
   when:
-#    - not environment_list.json | json_query(query_env_prior) == 'Library'
+    - not environment_list.json | json_query(query_env_prior) == 'Library'
     - sat_follow_env_path
   with_sequence: start=0 end=15 stride=1
 
@@ -38,7 +38,7 @@
 - name: Show Last CV Version
   debug:
     var: sat_cv_version_last
-    
+
 - name: Get content view version content
   uri:
     url: "{{ sat_url }}/{{ sat_api_path_content_view_versions }}/{{ sat_cv_version_last.id }}"
