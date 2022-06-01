@@ -9,4 +9,6 @@
   - name: Publish Base OS Content Views
     include_role:
       name: satellite6-content_views
-    with_items: base_cvs
+    with_items:
+      - RH
+      - EPEL
