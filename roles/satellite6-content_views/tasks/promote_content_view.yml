@@ -35,6 +35,10 @@
   set_fact:
     sat_cv_version_last: "{{ sat_cv.json | json_query(query_cv_version_list) | sort(attribute='published') | last }}"
 
+- name: Show Last CV Version
+  debug:
+    var: sat_cv_version_last
+    
 - name: Get content view version content
   uri:
     url: "{{ sat_url }}/{{ sat_api_path_content_view_versions }}/{{ sat_cv_version_last.id }}"
