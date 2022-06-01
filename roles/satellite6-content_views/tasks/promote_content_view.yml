@@ -12,7 +12,7 @@
 - name: Show Environment list
   debug:
     var: environment_list
-    
+
 - name: Initializing sat_current_env_name
   set_fact:
     sat_current_env_name: "{{ sat_env_name }}"
@@ -31,7 +31,7 @@
     sat_env_path: "{{ [ environment_list.json | json_query(query_env_prior) ] + sat_env_path }}"
     sat_current_env_name: "{{ environment_list.json | json_query(query_env_prior) }}"
   when:
-    - not environment_list.json | json_query(query_env_prior) == 'Library'
+#    - not environment_list.json | json_query(query_env_prior) == 'Library'
     - sat_follow_env_path
   with_sequence: start=0 end=15 stride=1
 
