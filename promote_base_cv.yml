@@ -5,6 +5,7 @@
     sat_cv_name: "{{ item }}"
     sat_publish: no
     sat_promote: yes
+    sat_env_name: dev
   tasks:
   - name: Publish Base OS Content Views
     include_role:
