@@ -46,9 +46,5 @@
     force_basic_auth: yes
   register: content_view_version_last
 
-- name: Show Last CV Version
-  debug:
-    var: content_view_version_last
-    
 - include: promote_to_env.yml
   with_items: "{{ sat_env_path }}"

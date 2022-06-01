@@ -4,14 +4,26 @@
     set_fact:
       sat_current_env_name: "{{ item }}"
 
+  - name: Show Current Env Name
+    debug:
+      var: sat_current_env_name
+
   - name: Setting environment id
     set_fact:
       sat_env_id: "{{ environment_list.json | json_query(query_env_id) }}"
+
+  - name: Show Env ID
+    debug:
+      var: sat_env_id
 
   - name: Checking if environment is already promoted
     set_fact:
       sat_env_is_promoted: "{{ content_view_version_last.json | json_query(query_env_is_promoted) }}"
 
+  - name: Show Env is promoted
+    debug:
+      var: sat_env_is_promoted
+      
   - debug: msg="Content view has already been promoted to {{ item }}"
     when: not sat_env_is_promoted
 
